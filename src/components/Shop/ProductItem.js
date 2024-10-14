@@ -6,11 +6,15 @@ import {cartActions} from "../../store";
 const ProductItem = (props) => {
   const dispatch = useDispatch();
 
-  const incrementHandler = () =>{
-    dispatch(cartActions.increment())
-  };
+  const {title, price, description, id} = props;
 
-  const { title, price, description } = props;
+  const incrementHandler = () =>{
+    dispatch(cartActions.increment({
+      id,
+      price,
+      title
+    }))
+  };
 
   return (
     <li className={classes.item}>

@@ -5,14 +5,16 @@ import {cartActions} from "../../store";
 const CartButton = (props) => {
     const dispatch = useDispatch();
     const toogleCart = () => {
+        console.log('11')
         dispatch(cartActions.toggleCart())
     }
-    const cartItems = useSelector(state => state.items);
+    const cartQuantity = useSelector(state => state.cart.totalQuantity)
+    const cartItems = useSelector(state => state.cart.items);
 
   return (
     <button className={classes.button} onClick={toogleCart}>
       <span>My Cart</span>
-        {cartItems > 0 && <span className={classes.badge}>{cartItems}</span>}
+        {cartQuantity > 0 && <span className={classes.badge}>{cartQuantity}</span>}
     </button>
   );
 };
